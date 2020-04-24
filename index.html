@@ -29,7 +29,7 @@
     </div>
     <div class="title-bar">
         <div class="logo font-pathway">GoDBLedger</div>
-        <div class="subtitle">Accounting System with features that programmers expect</div>
+        <div class="subtitle">The Accounting System With Features That Programmers Expect</div>
         <div class="github-iframe-bar">
             <iframe src="https://ghbtns.com/github-btn.html?user=nosir&repo=cleave.js&type=star&count=true"
                     style="margin-right: 5px;"
@@ -48,7 +48,7 @@
         <div class="demo">
 
             <div class="code code-phone">
-<pre><code class="language-sql">
+<pre><code class="language-sql">--Trial Balance directly from MySQL
 SELECT
   split_accounts.account_id,
   SUM(splits.amount)
@@ -57,6 +57,14 @@ JOIN split_accounts
   ON splits.split_id = split_accounts.split_id
 WHERE splits.split_date <= CURDATE()
 GROUP BY split_accounts.account_id
+
++--------------------+---------+
+| Account            | Balance |
++--------------------+---------+
+| Assets:Checking    |    1000 |
+| Revenue:Sales      |   -1000 |
++--------------------+---------+
+2 rows in set (0.00 sec)
 </code></pre>
             </div>
         </div>
