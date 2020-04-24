@@ -75,8 +75,16 @@ GROUP BY split_accounts.account_id
 
         <div class="demo">
             <div class="code">
-<pre><code class="language-bash">
-grpc_cli ls localhost:50051
+<pre><code class="language-js"> var transaction_proto = grpc.loadPackageDefinition(packageDefinition).transaction;
+client = new transaction_proto.Transactor(this.network, grpc.credentials.createInsecure());
+
+client.AddTransaction({
+  date: journal.date,
+  description: journal.description,
+  lines: lineitems,
+  signature: ""
+}, callback());
+
 </code></pre>
             </div>
         </div>
