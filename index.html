@@ -43,66 +43,36 @@
 <!-- demos -->
 <div class="demos">
     <section>
-        <h3>GRPC Endpoints</h3>
+        <h3>Database backends - SQL</h3>
 
         <div class="demo">
-            <p class="input-title">Enter phone number</p>
-
-            <div class="field">
-                <div class="region-selector selector">
-                    <div class="select-box-wrapper">
-                    </div>
-                    <div class="select-cover">
-                        <div class="title">Select country</div>
-                        <div class="side">&nbsp;</div>
-                        <span class="arrow">&nbsp;</span>
-                    </div>
-                </div>
-                <input placeholder="Enter phone number" class="input-phone" type="tel"/>
-            </div>
 
             <div class="code code-phone">
-<pre><code class="language-javascript">var cleave = new Cleave('.input-element', {
-    phone: true,
-    phoneRegionCode: '{country}'
-});</code></pre>
+<pre><code class="language-sql">
+SELECT
+  split_accounts.account_id,
+  SUM(splits.amount)
+FROM splits
+JOIN split_accounts
+  ON splits.split_id = split_accounts.split_id
+WHERE splits.split_date <= CURDATE()
+GROUP BY split_accounts.account_id
+</code></pre>
             </div>
         </div>
     </section>
 
     <section>
-        <h3>SQL Database</h3>
+        <h3>GRPC Endpoints</h3>
 
         <div class="demo">
-            <p class="input-title">YYYY-MM-DD</p>
-
-            <div class="field">
-                <input class="input-date-a" placeholder="YYYY-MM-DD" type="tel"/>
-            </div>
-
             <div class="code">
-<pre><code class="language-javascript">var cleave = new Cleave('.input-element', {
-    date: true,
-    delimiter: '-',
-    datePattern: ['Y', 'm', 'd']
-});</code></pre>
+<pre><code class="language-bash">
+grpc_cli ls localhost:50051
+</code></pre>
             </div>
         </div>
 
-        <div class="demo">
-            <p class="input-title">MM/YY</p>
-
-            <div class="field">
-                <input class="input-date-b" placeholder="MM/YY" type="tel"/>
-            </div>
-
-            <div class="code">
-<pre><code class="language-javascript">var cleave = new Cleave('.input-element', {
-    date: true,
-    datePattern: ['m', 'y']
-});</code></pre>
-            </div>
-        </div>
     </section>
 
     <section>
@@ -123,54 +93,6 @@
             </div>
         </div>
 
-        <div class="demo">
-            <p class="input-title">Delimiter: "·"</p>
-
-            <div class="field">
-                <input class="input-delimiter" placeholder='Delimiter: "·"' type="text"/>
-            </div>
-
-            <div class="code">
-<pre><code class="language-javascript">var cleave = new Cleave('.input-element', {
-    delimiter: '·',
-    blocks: [3, 3, 3],
-    uppercase: true
-});</code></pre>
-            </div>
-        </div>
-
-        <div class="demo">
-            <p class="input-title">Delimiter: ['.', '.', '-']</p>
-
-            <div class="field">
-                <input class="input-delimiters" placeholder='Delimiters: [".", ".", "-"]' type="text"/>
-            </div>
-
-            <div class="code">
-<pre><code class="language-javascript">var cleave = new Cleave('.input-element', {
-    delimiters: ['.', '.', '-'],
-    blocks: [3, 3, 3, 2],
-    uppercase: true
-});</code></pre>
-            </div>
-        </div>
-
-        <div class="demo">
-            <p class="input-title">Prefix-</p>
-
-            <div class="field">
-                <input class="input-prefix" type="text"/>
-            </div>
-
-            <div class="code">
-<pre><code class="language-javascript">var cleave = new Cleave('.input-element', {
-    prefix: 'PREFIX',
-    delimiter: '-',
-    blocks: [6, 4, 4, 4],
-    uppercase: true
-});</code></pre>
-            </div>
-        </div>
     </section>
 
     <section>
