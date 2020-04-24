@@ -35,39 +35,6 @@
 .icon-arrow-circle-o-right:before {
     content: "\f18e";
 }
-.icon-cc-visa:before {
-    content: "\f1f0";
-}
-.icon-cc-mastercard:before {
-    content: "\f1f1";
-}
-.icon-cc-discover:before {
-    content: "\f1f2";
-}
-.icon-cc-amex:before {
-    content: "\f1f3";
-}
-.icon-cc-jcb:before {
-    content: "\f24b";
-}
-.icon-cc-diners-club:before {
-    content: "\f24c";
-}
-.icon-credit-card-alt:before {
-    content: "\f283";
-}
 .icon-question-circle-o:before {
     content: "\f29c";
-}
-.icon-twitter:before {
-    content: "\f099";
-}
-.icon-weibo:before {
-    content: "\f18a";
-}
-.icon-codepen:before {
-    content: "\f1cb";
-}
-.icon-linkedin:before {
-    content: "\eac9";
 }
