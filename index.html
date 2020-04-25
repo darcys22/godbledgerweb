@@ -42,6 +42,28 @@
 
 <!-- demos -->
 <div class="demos">
+
+    <section>
+        <h3>GRPC Endpoints</h3>
+
+        <div class="demo">
+            <div class="code">
+<pre><code class="language-js">var transaction_proto = grpc.loadPackageDefinition(packageDefinition).transaction;
+client = new transaction_proto.Transactor(this.network, grpc.credentials.createInsecure());
+
+client.AddTransaction({
+  date: journal.date,
+  description: journal.description,
+  lines: lineitems,
+  signature: ""
+}, callback());
+
+</code></pre>
+            </div>
+        </div>
+
+    </section>
+
     <section>
         <h3>Database backends - SQL</h3>
 
@@ -71,41 +93,40 @@ GROUP BY split_accounts.account_id
     </section>
 
     <section>
-        <h3>GRPC Endpoints</h3>
+        <h3>Programmable Journal Entries! (Coming Soon)</h3>
 
         <div class="demo">
             <div class="code">
-<pre><code class="language-js"> var transaction_proto = grpc.loadPackageDefinition(packageDefinition).transaction;
-client = new transaction_proto.Transactor(this.network, grpc.credentials.createInsecure());
+<pre><code class="language-javascript">var MyJournal = Yurnell.newJournal();
 
-client.AddTransaction({
-  date: journal.date,
-  description: journal.description,
-  lines: lineitems,
-  signature: ""
-}, callback());
+module.exports = function(deployer) {
+  MyJournal.description = "my first description"
 
+  MyJournal.date = "30 june 2019"
+
+  lineitem = Yurnell.newLineItem();
+  lineitem.particulars = "something particular";
+  lineitem.amount = -10.0;
+  lineitem.account = "Income";
+  MyJournal.add(lineitem);
+
+  MyJournal.add(Yurnell.newLineItem({
+    particulars: "something particular",
+    amount: 10,
+    account: "Cash"
+  }));
+
+  //console.log(MyJournal.date.toString())
+  //console.log(MyJournal.length)
+  //console.log(MyJournal.balance().toFormat())
+  //console.log(MyJournal.Get(1))
+  //console.log(MyJournal.valid())
+  //console.log(Yurnell.frontend())
+
+  // deployment steps
+  deployer.deploy(MyJournal)
+};
 </code></pre>
-            </div>
-        </div>
-
-    </section>
-
-    <section>
-        <h3>Custom options</h3>
-
-        <div class="demo">
-            <p class="input-title">Blocks: [4, 3, 3, 4]</p>
-
-            <div class="field">
-                <input class="input-blocks" placeholder="Blocks: [4, 3, 3, 4]" type="text"/>
-            </div>
-
-            <div class="code">
-<pre><code class="language-javascript">var cleave = new Cleave('.input-element', {
-    blocks: [4, 3, 3, 4],
-    uppercase: true
-});</code></pre>
             </div>
         </div>
 
