@@ -58,15 +58,15 @@ client.AddTransaction({
     </section>
 
     <section>
-        <h3>Database backends - SQL</h3>
+        <h3>Database Backends - SQL</h3>
 
         <div class="demo">
 
             <div class="code code-phone">
 <pre><code class="language-sql">--Trial Balance directly from MySQL
 SELECT
-  split_accounts.account_id,
-  SUM(splits.amount)
+  split_accounts.account_id as Account,
+  SUM(splits.amount) as Balance
 FROM splits
 JOIN split_accounts
   ON splits.split_id = split_accounts.split_id
